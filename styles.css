@@ -44,13 +44,14 @@ h1 { margin: 0; color: var(--red); font: clamp(4rem, 14vw, 7.5rem)/.75 Georgia, 
 .subtitle { margin: 1.1rem 0 0; color: var(--paper); font: 1rem Georgia, "Times New Roman", serif; letter-spacing: .16em; }
 .byline { margin: 1.25rem 0 0; color: var(--gold); font-size: .72rem; letter-spacing: .04em; }
 
-.game-screen { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(18rem, .82fr) minmax(0, 1fr); grid-template-rows: auto 1fr auto; align-content: center; column-gap: clamp(1.5rem, 5vw, 4rem); overflow: hidden; padding: clamp(.75rem, 2vh, 1.4rem) clamp(.2rem, 3vw, 1.75rem); }
-.art { grid-row: 1 / span 3; align-self: center; display: block; width: 100%; height: auto; max-width: 432px; aspect-ratio: 16 / 10; margin: 0; border: 4px solid #4d3030; background: #000; image-rendering: pixelated; image-rendering: crisp-edges; }
+.game-screen { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(18rem, .82fr) minmax(0, 1fr); grid-template-rows: auto auto auto; align-content: center; column-gap: clamp(1.5rem, 5vw, 4rem); overflow: hidden; padding: clamp(.75rem, 2vh, 1.4rem) clamp(.2rem, 3vw, 1.75rem); }
+.art { grid-column: 1; grid-row: 1; align-self: center; display: block; width: 100%; height: auto; max-width: 432px; aspect-ratio: 16 / 10; margin: 0; border: 4px solid #4d3030; background: #000; image-rendering: pixelated; image-rendering: crisp-edges; }
+.scene-copy { grid-column: 2; grid-row: 1; align-self: center; }
 .location { margin: 0 0 .7rem; color: #ef5c5d; font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .narrative { max-width: 43rem; color: var(--paper); font-size: clamp(.84rem, 1.55vw, 1rem); line-height: 1.6; }
 .narrative p { margin: 0 0 .7rem; }
-.prompt { margin: 1rem 0 .55rem; color: var(--gold); }
-.choices { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; counter-reset: choice; }
+.prompt { grid-column: 2; grid-row: 2; margin: 1rem 0 .55rem; color: var(--gold); }
+.choices { grid-column: 2; grid-row: 3; display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; counter-reset: choice; }
 .choices button { width: 100%; padding: .5rem .65rem; border: 1px solid transparent; color: var(--green); background: transparent; font: inherit; text-align: left; cursor: pointer; }
 .choices button::before { content: counter(choice) ". "; counter-increment: choice; color: var(--green-bright); }
 .choices button:hover, .choices button:focus-visible { border-color: var(--green); outline: none; color: var(--green-bright); background: #243224; }
@@ -78,6 +79,7 @@ dialog img { display: block; width: 100%; height: auto; border: 1px solid var(--
 @media (max-width: 44rem) {
   .game-shell { width: min(100% - 1.25rem, 40rem); padding-block: .5rem; }
   .game-screen { display: flex; flex-direction: column; justify-content: center; padding-inline: 0; }
+  .scene-copy { align-self: stretch; }
   .art { width: min(100%, 320px); margin: .25rem auto 1.2rem; }
   .location { margin-top: .8rem; }
   .narrative { font-size: .9rem; line-height: 1.65; }
