@@ -78,7 +78,6 @@ dialog::backdrop { background: rgba(0, 0, 0, .8); }
 .roads path { fill: none; stroke: #080b13; stroke-width: 24; stroke-linejoin: square; }
 .road-centres path { fill: none; stroke: #d7b257; stroke-width: 3; stroke-dasharray: 5 4; }
 .map-labels text, .gates text { fill: #e7dc9f; font: 700 12px ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .7px; text-anchor: middle; paint-order: stroke; stroke: #102b2d; stroke-width: 4px; stroke-linejoin: round; }
-.map-labels .vertical { transform-box: fill-box; transform-origin: center; transform: rotate(-90deg); }
 .gates path { fill: #bd373e; stroke: #080b13; stroke-width: 4; }
 .gates text { fill: #e6b44c; font-size: 11px; }
 .player-marker rect { fill: #e6b44c; stroke: #080b13; stroke-width: 3; }

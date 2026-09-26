@@ -26,11 +26,13 @@ The city is Gaalway. Its recovered street names are:
 - **Low Street** and **Harbour Street** along the southern edge.
 - **Acton Avenue** and **Manchester Road** as the lower west/east boundaries.
 - **West Street** and **East Street** across the centre.
-- **Market Street** through the centre.
+- **Wigan Street** through the upper centre and **Market Street** through the lower centre.
 - **Andy Street** and **Christian Street** as the upper west/east boundaries.
 - **High Street** and **Heath Lane** along the northern edge.
 
 The schematic topology in `content/world.yaml` is intentionally an initial interpretation of the hand-drawn map, rather than a claim to exact historical reconstruction. It is easy to amend once the original code is found.
+
+The canonical street graph and placement metadata live in `docs/world-graph.md`. The playable map, content data, and future navigation choices must follow that document.
 
 ## 4. Story arc (first draft)
 

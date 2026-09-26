@@ -33,7 +33,7 @@ locations:
     name: Low Street
     map_note: "South-western edge road."
     source: original-map
-    exits: [city-gates, west-street, market-street, acton-avenue]
+    exits: [city-gates, west-street, east-street, market-street, acton-avenue]
 
   harbour-street:
     name: Harbour Street
@@ -45,55 +45,61 @@ locations:
     name: West Street
     map_note: "Central west cross-street."
     source: original-map
-    exits: [low-street, high-street, market-street, acton-avenue]
+    exits: [low-street, andy-street, wigan-street, market-street, acton-avenue]
 
   east-street:
     name: East Street
     map_note: "Central east cross-street."
     source: original-map
-    exits: [harbour-street, heath-lane, market-street, manchester-road]
+    exits: [low-street, harbour-street, wigan-street, market-street, christian-street, manchester-road]
 
   market-street:
     name: Market Street
-    map_note: "Central north–south route."
+    map_note: "Lower central vertical route, south of Wigan Street."
     source: original-map
-    exits: [city-gates, low-street, harbour-street, west-street, east-street, high-street, heath-lane]
+    exits: [city-gates, low-street, harbour-street, west-street, east-street]
 
   high-street:
     name: High Street
     map_note: "North-western edge road."
     source: original-map
-    exits: [west-street, market-street, andy-street]
+    exits: [andy-street, wigan-street]
 
   heath-lane:
     name: Heath Lane
     map_note: "North-eastern edge road."
     source: original-map
-    exits: [east-street, market-street, christian-street]
+    exits: [wigan-street, christian-street]
 
   andy-street:
     name: Andy Street
     map_note: "Upper western boundary."
     source: original-map
-    exits: [high-street, acton-avenue]
+    exits: [high-street, west-street]
+
+  wigan-street:
+    name: Wigan Street
+    map_note: "Upper central vertical street, between High Street/Heath Lane and West Street/East Street."
+    source: original-map-corrected
+    exits: [high-street, heath-lane, west-street, east-street]
 
   christian-street:
     name: Christian Street
     map_note: "Upper eastern boundary."
     source: original-map
-    exits: [heath-lane, manchester-road]
+    exits: [heath-lane, east-street]
 
   acton-avenue:
     name: Acton Avenue
     map_note: "Lower western boundary."
     source: original-map
-    exits: [andy-street, west-street, low-street]
+    exits: [west-street, low-street]
 
   manchester-road:
     name: Manchester Road
     map_note: "Lower eastern boundary."
     source: original-map
-    exits: [christian-street, east-street, harbour-street]
+    exits: [east-street, harbour-street]
 
 # Map connections are a first-pass interpretation, deliberately marked as revisable.
 # When original code is recovered, compare each route with it before treating it as canon.
