@@ -73,7 +73,16 @@ dialog::backdrop { background: rgba(0, 0, 0, .8); }
 .map-header h2 { margin: 0; color: var(--red); font: 2.2rem/1 Georgia, "Times New Roman", serif; }
 .map-header button { border: 1px solid var(--line); padding: .55rem .7rem; color: var(--gold); background: transparent; font: inherit; cursor: pointer; }
 .map-header button:hover, .map-header button:focus-visible { border-color: var(--gold); color: var(--paper); outline: none; }
-dialog img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--paper); }
+.ega-map { width: 100%; aspect-ratio: 16 / 10; border: 4px solid #090c0d; background: #1d5c5b url("assets/maps/gaalway-ega-map-background.png") center / cover; image-rendering: pixelated; image-rendering: crisp-edges; box-shadow: inset 0 0 0 2px var(--gold); }
+.ega-map svg { width: 100%; height: 100%; overflow: visible; }
+.roads path { fill: none; stroke: #080b13; stroke-width: 24; stroke-linejoin: square; }
+.road-centres path { fill: none; stroke: #d7b257; stroke-width: 3; stroke-dasharray: 5 4; }
+.map-labels text, .gates text { fill: #e7dc9f; font: 700 12px ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .7px; text-anchor: middle; paint-order: stroke; stroke: #102b2d; stroke-width: 4px; stroke-linejoin: round; }
+.map-labels .vertical { transform-box: fill-box; transform-origin: center; transform: rotate(-90deg); }
+.gates path { fill: #bd373e; stroke: #080b13; stroke-width: 4; }
+.gates text { fill: #e6b44c; font-size: 11px; }
+.player-marker rect { fill: #e6b44c; stroke: #080b13; stroke-width: 3; }
+.player-marker path { stroke: #080b13; stroke-width: 2; }
 .map-caption { margin: 1rem 0 .2rem; color: #b7a98c; font-size: .75rem; line-height: 1.5; }
 
 @media (max-width: 44rem) {

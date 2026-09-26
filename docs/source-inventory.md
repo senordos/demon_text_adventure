@@ -15,5 +15,4 @@ Photographs in `original_assets/` are preserved unchanged. This inventory record
 
 ## Interpretation notes
 
-The map is a stylised road grid. Street labels have been transcribed in `docs/content-spec.md` and represented conservatively in `content/world.yaml`. Ambiguous geometry is recorded as an assumption rather than encoded as unchangeable truth.
-
+The map is a stylised road grid. Street labels have been transcribed in `docs/content-spec.md` and represented conservatively in `content/world.yaml`. The playable map is a separate digitised EGA treatment: editable SVG roads and labels over `assets/maps/gaalway-ega-map-background.png`. The photograph remains the archival source; ambiguous geometry is recorded as an assumption rather than encoded as unchangeable truth.
