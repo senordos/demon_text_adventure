@@ -33,7 +33,7 @@ locations:
     name: Low Street
     map_note: "South-western edge road."
     source: original-map
-    exits: [city-gates, west-street, market-street, aven-avenue]
+    exits: [city-gates, west-street, market-street, acton-avenue]
 
   harbour-street:
     name: Harbour Street
@@ -45,7 +45,7 @@ locations:
     name: West Street
     map_note: "Central west cross-street."
     source: original-map
-    exits: [low-street, high-street, market-street, aven-avenue]
+    exits: [low-street, high-street, market-street, acton-avenue]
 
   east-street:
     name: East Street
@@ -63,7 +63,7 @@ locations:
     name: High Street
     map_note: "North-western edge road."
     source: original-map
-    exits: [west-street, market-street, aug-street]
+    exits: [west-street, market-street, andy-street]
 
   heath-lane:
     name: Heath Lane
@@ -71,11 +71,11 @@ locations:
     source: original-map
     exits: [east-street, market-street, christian-street]
 
-  aug-street:
-    name: Aug Street
+  andy-street:
+    name: Andy Street
     map_note: "Upper western boundary."
     source: original-map
-    exits: [high-street, aven-avenue]
+    exits: [high-street, acton-avenue]
 
   christian-street:
     name: Christian Street
@@ -83,11 +83,11 @@ locations:
     source: original-map
     exits: [heath-lane, manchester-road]
 
-  aven-avenue:
-    name: Aven Avenue
+  acton-avenue:
+    name: Acton Avenue
     map_note: "Lower western boundary."
     source: original-map
-    exits: [aug-street, west-street, low-street]
+    exits: [andy-street, west-street, low-street]
 
   manchester-road:
     name: Manchester Road
