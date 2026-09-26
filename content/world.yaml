@@ -1,0 +1,99 @@
+# Seed world data transcribed from the original manual and map.
+# This file is human-authored source; a future build step will validate/compile it.
+meta:
+  game_id: demon
+  title: "Demon: The Ultimate Text Adventure"
+  source_status: recovered-manual-and-map
+  deterministic: true
+
+player_start:
+  location: city-gates
+  gold: 100
+  health: 3
+  inventory:
+    - sword
+
+items:
+  sword:
+    name: Sword
+    source: original-manual
+    description: "A starting sword. Its precise usefulness is yet to be written."
+
+locations:
+  city-gates:
+    name: City Gates
+    map_note: "Southern entrance, labelled GATES on the original map."
+    source: original-manual-and-map
+    exits:
+      - low-street
+      - harbour-street
+      - market-street
+
+  low-street:
+    name: Low Street
+    map_note: "South-western edge road."
+    source: original-map
+    exits: [city-gates, west-street, market-street, aven-avenue]
+
+  harbour-street:
+    name: Harbour Street
+    map_note: "South-eastern edge road."
+    source: original-map
+    exits: [city-gates, east-street, market-street, manchester-road]
+
+  west-street:
+    name: West Street
+    map_note: "Central west cross-street."
+    source: original-map
+    exits: [low-street, high-street, market-street, aven-avenue]
+
+  east-street:
+    name: East Street
+    map_note: "Central east cross-street."
+    source: original-map
+    exits: [harbour-street, heath-lane, market-street, manchester-road]
+
+  market-street:
+    name: Market Street
+    map_note: "Central north–south route."
+    source: original-map
+    exits: [city-gates, low-street, harbour-street, west-street, east-street, high-street, heath-lane]
+
+  high-street:
+    name: High Street
+    map_note: "North-western edge road."
+    source: original-map
+    exits: [west-street, market-street, aug-street]
+
+  heath-lane:
+    name: Heath Lane
+    map_note: "North-eastern edge road."
+    source: original-map
+    exits: [east-street, market-street, christian-street]
+
+  aug-street:
+    name: Aug Street
+    map_note: "Upper western boundary."
+    source: original-map
+    exits: [high-street, aven-avenue]
+
+  christian-street:
+    name: Christian Street
+    map_note: "Upper eastern boundary."
+    source: original-map
+    exits: [heath-lane, manchester-road]
+
+  aven-avenue:
+    name: Aven Avenue
+    map_note: "Lower western boundary."
+    source: original-map
+    exits: [aug-street, west-street, low-street]
+
+  manchester-road:
+    name: Manchester Road
+    map_note: "Lower eastern boundary."
+    source: original-map
+    exits: [christian-street, east-street, harbour-street]
+
+# Map connections are a first-pass interpretation, deliberately marked as revisable.
+# When original code is recovered, compare each route with it before treating it as canon.

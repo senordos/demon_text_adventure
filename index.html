@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171313" />
+    <title>Demon: The Ultimate Text Adventure</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="masthead">
+        <p class="eyebrow">CTS SOFTWARE PRESENTS</p>
+        <h1>DEMON</h1>
+        <p class="subtitle">THE ULTIMATE TEXT ADVENTURE</p>
+        <p class="byline">A game by Christian Timms and Andrew Davies</p>
+      </header>
+
+      <section class="game-screen" aria-live="polite" aria-atomic="true">
+        <img id="art" class="art" src="assets/scenes/city-gates.png" alt="" />
+        <p id="location" class="location"></p>
+        <div id="narrative" class="narrative"></div>
+        <p id="prompt" class="prompt">What do you do?</p>
+        <ol id="choices" class="choices" aria-label="Available choices"></ol>
+      </section>
+
+      <aside class="status" aria-label="Current adventure status">
+        <div><span>GOLD</span><strong id="gold">100</strong></div>
+        <div><span>HEALTH</span><strong id="health">♥ ♥ ♥</strong></div>
+        <div class="inventory"><span>IN YOUR HANDS</span><strong id="inventory">Sword</strong></div>
+      </aside>
+
+      <footer>
+        <span id="controls-hint">Press a number or select a choice</span>
+        <div class="footer-actions">
+          <button id="map-button" type="button" aria-haspopup="dialog">View street map</button>
+          <button id="restart" type="button">Start again</button>
+        </div>
+      </footer>
+    </main>
+
+    <dialog id="map-dialog" aria-labelledby="map-title">
+      <div class="map-header">
+        <div>
+          <p class="eyebrow">GAALWAY NAVIGATION AUTHORITY</p>
+          <h2 id="map-title">Street map</h2>
+        </div>
+        <button id="close-map" type="button" aria-label="Close street map">Close ×</button>
+      </div>
+      <img src="original_assets/map.jpeg" alt="The original illustrated city map of Gaalway, showing City Gates, High Street, Heath Lane, Low Street, Harbour Street, Market Street, West Street, East Street, Aug Street, Christian Street, Aven Avenue, and Manchester Road." />
+      <p class="map-caption">The original map. It will grow more useful as streets and discoveries are added to the adventure.</p>
+    </dialog>
+    <script src="game.js"></script>
+  </body>
+</html>
