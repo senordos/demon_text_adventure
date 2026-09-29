@@ -121,6 +121,12 @@ function render() {
   document.querySelector("#health").textContent = "♥ ".repeat(state.health).trim();
   document.querySelector("#inventory").textContent = displayInventory();
   const choices = screen.choices.filter(choice => meetsRequirements(choice.requires));
+  const choicePreview = document.querySelector("#choice-preview");
+  choicePreview.hidden = isSplash || choices.length === 0;
+  choicePreview.textContent = choices.length
+    ? `1. ${choices[0].label}${choices.length > 1 ? " (+ more)" : ""}`
+    : "";
+  choicePreview.setAttribute("aria-expanded", String(choosing));
   const choiceList = document.querySelector("#choices");
   choiceList.innerHTML = "";
   choices.forEach(choice => {
@@ -133,7 +139,7 @@ function render() {
     choiceList.append(item);
   });
   const choiceToggle = document.querySelector("#choice-toggle");
-  choiceToggle.textContent = choosing ? "Read story" : `Choices (${choices.length})`;
+  choiceToggle.textContent = choosing ? "Read story" : "Choices";
   choiceToggle.setAttribute("aria-expanded", String(choosing));
   if (screen.autoAdvance) {
     splashTimer = window.setTimeout(() => {
@@ -172,7 +178,13 @@ document.addEventListener("keydown", event => {
   if (event.target.matches("button")) return;
   const choice = Number(event.key);
   const buttons = document.querySelectorAll("#choices button");
-  if (choice >= 1 && choice <= buttons.length) buttons[choice - 1].click();
+  if (choice < 1 || choice > buttons.length) return;
+  if (window.matchMedia("(max-width: 44rem)").matches && !choosing) {
+    choosing = true;
+    render();
+    return;
+  }
+  buttons[choice - 1].click();
 });
 
 const mapDialog = document.querySelector("#map-dialog");
@@ -180,6 +192,10 @@ document.querySelector("#map-button").addEventListener("click", () => mapDialog.
 document.querySelector("#close-map").addEventListener("click", () => mapDialog.close());
 document.querySelector("#choice-toggle").addEventListener("click", () => {
   choosing = !choosing;
+  render();
+});
+document.querySelector("#choice-preview").addEventListener("click", () => {
+  choosing = true;
   render();
 });
 
