@@ -31,6 +31,7 @@ The deliberate non-framework choice keeps the game close to its GW-BASIC roots: 
 - Preserve the original palette principle: situation/location in red, choices in green, with accessible contrast and no colour-only meaning.
 - Support restart, undo last decision (where technically safe), save/continue, and an optional “start fresh” mode.
 - Be deterministic by default: the same choices from the same state yield the same result. Any later randomness must be declared in content and seeded for replayability.
+- Support data-driven maxim duels: a character presents a maxim opening, the player selects a learned completion, and the sword applies the corresponding form. Correct completions reduce opponent poise; incorrect completions create comic, recoverable health or story consequences. This must be a learned language puzzle, never an insult-exchange system.
 - Use responsive layout, readable font sizing, reduced-motion support, screen-reader labels, and keyboard focus.
 - Use a dedicated splash screen for the title, original-style creator credit, and one named title image only—no story text, choices, status, or footer controls. Gameplay screens must not repeat the large title masthead. The splash is shown on every page load and restart for **3 seconds**, then automatically opens the introduction screen. Its duration is a named, easily editable configuration value in the client code. The current replaceable title image is `assets/scenes/title-splash.png`.
 - The introduction screen contains the opening premise and exactly one **Continue the adventure** choice. It then starts a new game at City Gates or resumes the saved game when one exists.
@@ -46,7 +47,7 @@ The deliberate non-framework choice keeps the game close to its GW-BASIC roots: 
 The engine is a finite state machine driven by content.
 
 ```text
-Game state = location + flags + inventory + gold + health + history
+Game state = location + flags + inventory + gold + health + known maxims + history
 screen = location/state rules + narrative + scene art + available choices
 choice = visibility rules + effects + destination/outcome
 ```
@@ -60,6 +61,8 @@ At every turn the engine will:
 5. Persist the resulting state locally.
 
 Content owns story text, choices, requirements, effects, characters, items, endings, and scene-art references. The engine owns only generic rules, rendering, input, persistence, and validation. This separation means story changes do not require engine changes. The first implementation is `content/demon.json`; see `docs/content-format.md` for the author-facing schema.
+
+The maxim-duel extension follows the same separation. The engine will understand a generic learned-maxim record and generic numeric meters such as player health and opponent poise; content will define all openings, completions, characters, outcomes, and sword forms. See `docs/maxim-duel-spec.md`.
 
 ## 5. Repository shape when implementation begins
 

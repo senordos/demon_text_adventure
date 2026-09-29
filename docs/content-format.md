@@ -10,6 +10,7 @@
 | `playerStart` | Initial screen, gold, health, inventory item IDs, and flags. |
 | `items` | Item catalogue. Each item has a stable ID, display name, and description. |
 | `screens` | Every playable screen, keyed by a stable ID. |
+| `maxims` | Planned catalogue of learnable maxim records for the maxim-duel system. Not interpreted by the current prototype yet. |
 
 ## Screen fields
 
@@ -52,3 +53,9 @@ Each choice has a visible `label` and a `destination` screen ID. `@resume` is th
 5. Test through a local web server after an edit; direct `file://` opening cannot load JSON content safely.
 
 The browser validates the most important links when it starts and displays an error instead of silently running a broken adventure.
+
+## Planned maxim-duel extension
+
+The next engine increment will add a data-only `maxims` catalogue and generic duel screens. A maxim will have an `opening`, `completion`, source note, and sword-form outcome. The player state will record which maxim IDs have been learned. A duel will declare an opponent poise meter and choices that use known completions; success reduces poise and an incorrect completion applies a generic recoverable health or story effect.
+
+This belongs in content rather than `game.js`: the engine will only recognise generic maxims, meters, requirements, and effects. Demon-specific sayings, characters, jokes, and sword forms remain data. See [the maxim-duel system](maxim-duel-spec.md) for the player-facing and authoring rules.

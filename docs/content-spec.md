@@ -8,6 +8,8 @@ This is a new game built from the surviving original design, not an attempt to p
 
 **Original design promises to retain:** follow the map; navigate the city; find clues; collect objects; stay alive; numbered choices; a game that can be learned through replay.
 
+**Canonical new mechanic:** the player's sword is enchanted to perform forms when a known maxim is correctly completed. During the adventure, people may offer an opening from a proverb, idiom, local saying, or family saying. The player learns these maxims through exploration and later selects the appropriate completion in a maxim duel. This is a language-and-memory challenge, not an insult contest. The detailed rule set is in [the maxim-duel system](maxim-duel-spec.md).
+
 ## 2. Tone
 
 Comic fantasy with a straight-faced narrator, silly names, dry consequences, and warmly absurd people. The danger is real enough for a game, but never grim or cruel. The joke should usually emerge from character, observation, or a player's choice—not from reference-heavy parody.
@@ -39,7 +41,7 @@ The canonical street graph and placement metadata live in `docs/world-graph.md`.
 | Act | Player goal | Tentative comic material |
 | --- | --- | --- |
 | I — Getting in | Find out why the gates are unattended and enter the city | A gatekeeper on an unpaid tea break; a guard who insists the sword needs a library card |
-| II — Getting wise | Assemble clues, allies, and the means to reach Puzo | Bureaucratic market traders, an overconfident harbour ferryman, a suspiciously literal street musician |
+| II — Getting wise | Assemble clues, allies, maxims, and the means to reach Puzo | Bureaucratic market traders, an overconfident harbour ferryman, a suspiciously literal street musician, and sayings that turn into sword forms |
 | III — Getting there | Pass the villain's layered defences | Puzzles that reward attention to prior jokes and map knowledge |
 | IV — Getting out | Rescue the Princess and resolve the final bargain | The Princess has a competent escape plan, but needs one ridiculous missing component |
 
@@ -57,6 +59,8 @@ Every location file will define:
 - effects (move, add/remove item, adjust gold/health, set flag, ending);
 - an explicit response for a choice that becomes unavailable after discovery, if that is funny or useful.
 
+Where a location teaches a maxim, author the speaker or source, the opening, the completion, its Book of Questionable Wisdom note, and the later encounter(s) in which it is useful. Where a character challenges the player, author their poise, their openings, the correct completions, and both comic success and recoverable failure text.
+
 Every item needs a unique ID, display name, short description, and a purpose or deliberate red-herring label. Every non-player character needs a role, voice note, location(s), and state flags that record meaningful changes.
 
 No prose should silently modify state. No choice should dead-end the player without an intentional ending or a recoverable route. Failures should explain what happened and offer restart/undo.
@@ -67,9 +71,10 @@ No prose should silently modify state. No choice should dead-end the player with
 2. Create a one-screen “story card” for each location: purpose, resident, clue/item, exits, and possible joke.
 3. Draw the critical path in a route diagram before writing full prose.
 4. Write the playable scenes as data, including state variants and choices.
-5. Add a short original EGA-style 320×200 scene only after each scene works in text.
-6. Play through the route from a clean save, then test the wrong-but-plausible choices.
-7. Mark every new invention as `new` in author notes, so recovered GW-BASIC code can be reconciled respectfully.
+5. Create maxim cards and place each learning route before its required encounter.
+6. Add a short original EGA-style 320×200 scene only after each scene works in text.
+7. Play through the route from a clean save, then test the wrong-but-plausible choices and every duel outcome.
+8. Mark every new invention as `new` in author notes, so recovered GW-BASIC code can be reconciled respectfully.
 
 ## 7. Initial content questions to settle later
 
