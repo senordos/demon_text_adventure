@@ -19,7 +19,15 @@
     },
     "brass-key": {
       "name": "Brass key",
-      "description": "A small key labelled NOT THE PRINCESS KEY."
+      "description": "A small brass key blank labelled NOT THE PRINCESS KEY. It has potential, but not enough teeth."
+    },
+    "lock-pattern-rubbing": {
+      "name": "Lock-pattern rubbing",
+      "description": "A charcoal rubbing of some extremely fussy lock teeth, obtained from an East Street delivery cart."
+    },
+    "heath-lane-key": {
+      "name": "Heath Lane key",
+      "description": "A properly cut key made by Señor Dos' Garage. It looks smugly specific."
     }
   },
   "screens": {
@@ -58,26 +66,11 @@
       "art": { "src": "assets/scenes/low-street.png", "alt": "The crooked shops and bench of Low Street." },
       "text": [
         "Low Street is named after its low buildings, low prices, and the astonishingly low expectations of its town planner.",
-        "A small brass object glints beneath a bench. No one is looking, which is how objects traditionally ask to be collected."
+        "A bench offers no useful advice, but is extremely firm about the matter. This is a side street, not the way towards Heath Lane."
       ],
       "choices": [
-        { "label": "Pick up the brass key", "destination": "low-street-key" },
         { "label": "Return to City Gates", "destination": "city-gates" },
         { "label": "Go to the Market", "destination": "market-street" }
-      ]
-    },
-    "low-street-key": {
-      "location": "Low Street",
-      "art": { "src": "assets/scenes/low-street.png", "alt": "A brass key glinting beneath a bench on Low Street." },
-      "onEnter": [{ "type": "add-item", "item": "brass-key" }],
-      "text": [
-        "You acquire a small brass key. It is labelled: ‘NOT THE PRINCESS KEY’. This is either helpful or the work of a very organised villain.",
-        "From the pub doorway, a man applauds politely. ‘Excellent collection technique,’ he says. ‘Seven out of ten. You bent your knees.’"
-      ],
-      "choices": [
-        { "label": "Ask the man who he is", "destination": "market-intro" },
-        { "label": "Go to the Market", "destination": "market-street" },
-        { "label": "Return to City Gates", "destination": "city-gates" }
       ]
     },
     "market-street": {
@@ -85,13 +78,29 @@
       "art": { "src": "assets/scenes/market-street.png", "alt": "The bustling Market Street of Gaalway." },
       "text": [
         "Market Street is busy with traders selling turnips, maps of other streets, and one very determined umbrella.",
-        "At the centre stands the Gatekeeper, wearing a helmet, a teapot, and the expression of a man interrupted during both lunch and philosophy."
+        "At the centre stands the Gatekeeper, wearing a helmet, a teapot, and the expression of a man interrupted during both lunch and philosophy. Beside him, a brass merchant sells keys that have not yet decided what they open."
+      ],
+      "choices": [
+        { "label": "Buy the promising brass key", "destination": "market-key" },
+        { "label": "Ask the Gatekeeper about Mario Puzo", "destination": "market-intro" },
+        { "label": "Go along East Street", "destination": "east-street" },
+        { "label": "Try the Heath Lane gate", "destination": "locked-road" },
+        { "label": "Go to Low Street", "destination": "low-street" },
+        { "label": "Return to City Gates", "destination": "city-gates" }
+      ]
+    },
+    "market-key": {
+      "location": "Market Street",
+      "art": { "src": "assets/scenes/market-street.png", "alt": "A brass-key merchant in the busy Market Street of Gaalway." },
+      "onEnter": [{ "type": "add-item", "item": "brass-key" }],
+      "text": [
+        "The merchant sells you a small brass key blank for one gold piece, then returns the gold because he cannot decide where to keep the till.",
+        "‘It will open anything,’ he says, ‘once someone more technically minded tells it how.’"
       ],
       "choices": [
         { "label": "Ask the Gatekeeper about Mario Puzo", "destination": "market-intro" },
-        { "label": "Try the locked road towards Heath Lane", "destination": "locked-road" },
-        { "label": "Go to Low Street", "destination": "low-street" },
-        { "label": "Return to City Gates", "destination": "city-gates" }
+        { "label": "Go along East Street", "destination": "east-street" },
+        { "label": "Return to the market", "destination": "market-street" }
       ]
     },
     "market-intro": {
@@ -99,20 +108,101 @@
       "art": { "src": "assets/scenes/market-street.png", "alt": "The Market Street gatekeeper with a helmet and teapot." },
       "text": [
         "‘Mario Puzo?’ says the Gatekeeper. ‘Terrible fellow. Keeps locking roads and calling it interior design.’",
-        "He points north. ‘Heath Lane is closed by a tiny, very important lock. You look like someone carrying a key that has an unnecessary label.’"
+        "He points north. ‘Heath Lane is closed by a tiny, very important lock. A key alone will not impress it. Try East Street, then ask the fellow on Christian Street. He repairs carriages, gates, and occasionally opinions.’"
       ],
       "choices": [
         { "label": "Go to the locked road", "destination": "locked-road" },
+        { "label": "Go along East Street", "destination": "east-street" },
         { "label": "Thank him and return to the market", "destination": "market-street" },
         { "label": "Return to City Gates", "destination": "city-gates" }
+      ]
+    },
+    "east-street": {
+      "location": "East Street",
+      "art": { "src": "assets/scenes/market-street.png", "alt": "A cluttered eastern street in Gaalway, with a delivery cart blocking the road." },
+      "text": [
+        "A delivery cart has shed a wheel and now occupies the entire road with the authority of a small, wooden mayor.",
+        "Its driver is trying to hold the cart still while making a charcoal rubbing of the unusual lock-pattern stamped on its official axle permit. This seems an unnecessarily specific problem until you remember the Gatekeeper."
+      ],
+      "choices": [
+        { "label": "Use the brass key to chock the runaway wheel", "destination": "east-street-cleared", "requires": { "items": ["brass-key"] }, "blockedHint": "The wandering wheel needs something small, firm, and metallic before anyone can work safely." },
+        { "label": "Go to Christian Street", "destination": "christian-street", "requires": { "items": ["lock-pattern-rubbing"] }, "blockedHint": "The delivery cart has chosen to occupy the whole street until its wheel is made less adventurous." },
+        { "label": "Return to the market", "destination": "market-street" }
+      ]
+    },
+    "east-street-cleared": {
+      "location": "East Street",
+      "art": { "src": "assets/scenes/market-street.png", "alt": "A delivery cart safely chocked on East Street in Gaalway." },
+      "onEnter": [{ "type": "add-item", "item": "lock-pattern-rubbing" }],
+      "text": [
+        "The brass key holds the wheel just long enough for the driver to breathe, finish the rubbing, and decide you are probably an engineer by association.",
+        "‘Take this,’ she says, handing you the lock-pattern rubbing. ‘I have two, and one of them keeps judging my handwriting.’"
+      ],
+      "choices": [
+        { "label": "Go to Christian Street", "destination": "christian-street" },
+        { "label": "Return to the market", "destination": "market-street" }
+      ]
+    },
+    "christian-street": {
+      "location": "Christian Street",
+      "art": { "src": "assets/scenes/senor-dos-garage.png", "alt": "The workshop doorway of Señor Dos' Garage on Christian Street." },
+      "text": [
+        "Christian Street is quieter than the market, apart from the reassuring clank of tools and a sign reading ‘SEÑOR DOS' GARAGE: WHEELS, WINCHES, WHIMS.’",
+        "The workshop door is open. Inside, someone is explaining the structural weaknesses of a wheel to the wheel itself."
+      ],
+      "choices": [
+        { "label": "Enter Señor Dos' Garage", "destination": "senor-dos-garage" },
+        { "label": "Return to East Street", "destination": "east-street" }
+      ]
+    },
+    "senor-dos-garage": {
+      "location": "Señor Dos' Garage",
+      "art": { "src": "assets/scenes/senor-dos-garage.png", "alt": "Christian speaking across the workbench at Señor Dos' Garage." },
+      "text": [
+        "Christian looks up from a workbench crowded with gears, wheels, and a wrench that appears to be listening. ‘Welcome to Señor Dos' Garage,’ he says. ‘If it turns, sticks, or refuses to move on principle, I can at least explain why.’",
+        "You mention Heath Lane. He nods thoughtfully. ‘That lock needs a properly cut key. Bring me brass to cut and a pattern with the right teeth, and I can make it something useful.’"
+      ],
+      "choices": [
+        { "label": "Ask Christian to cut a Heath Lane key", "destination": "garage-key-made", "requires": { "items": ["brass-key", "lock-pattern-rubbing"] }, "blockedHint": "Christian taps the empty workbench. ‘I need brass to cut and something reliable to copy.’" },
+        { "label": "Ask what else he repairs", "destination": "garage-advice" },
+        { "label": "Return to Christian Street", "destination": "christian-street" }
+      ]
+    },
+    "garage-advice": {
+      "location": "Señor Dos' Garage",
+      "art": { "src": "assets/scenes/senor-dos-garage.png", "alt": "Christian offering practical advice at the workbench of Señor Dos' Garage." },
+      "text": [
+        "‘Mostly wheels,’ says Christian. ‘But gates are just wheels that have become suspicious of horizontal movement. And locks are tiny committees with teeth.’",
+        "He points to the workbench. ‘The trick is never to force a mechanism. Give it the right reason to cooperate.’"
+      ],
+      "choices": [
+        { "label": "Ask Christian to cut a Heath Lane key", "destination": "garage-key-made", "requires": { "items": ["brass-key", "lock-pattern-rubbing"] }, "blockedHint": "Christian taps the empty workbench. ‘I need brass to cut and something reliable to copy.’" },
+        { "label": "Return to Christian Street", "destination": "christian-street" }
+      ]
+    },
+    "garage-key-made": {
+      "location": "Señor Dos' Garage",
+      "art": { "src": "assets/scenes/senor-dos-garage.png", "alt": "Christian presenting a newly cut Heath Lane key across the workshop bench." },
+      "onEnter": [
+        { "type": "remove-item", "item": "brass-key" },
+        { "type": "remove-item", "item": "lock-pattern-rubbing" },
+        { "type": "add-item", "item": "heath-lane-key" }
+      ],
+      "text": [
+        "Christian studies the rubbing, measures the brass key blank three times, and makes a series of tiny cuts with a tool that has more confidence than any tool should possess.",
+        "‘There,’ he says, handing you the Heath Lane key. ‘It should open the gate. If it opens a bakery instead, do bring me back a bun.’"
+      ],
+      "choices": [
+        { "label": "Thank Christian and return to Christian Street", "destination": "christian-street" },
+        { "label": "Return to East Street", "destination": "east-street" }
       ]
     },
     "locked-road": {
       "location": "Road to Heath Lane",
       "art": { "src": "assets/scenes/locked-road.png", "alt": "A tiny locked gate blocking the road to Heath Lane." },
-      "text": ["A petite iron gate blocks the way. Its lock is no bigger than a biscuit, though likely less crumbly."],
+      "text": ["A petite iron gate blocks the way. Its lock is no bigger than a biscuit, though likely less crumbly. It gives the distinct impression that an ordinary key would merely offend it."],
       "choices": [
-        { "label": "Use the brass key", "destination": "heath-lane", "requires": { "items": ["brass-key"] } },
+        { "label": "Open the Heath Lane gate", "destination": "heath-lane", "requires": { "items": ["heath-lane-key"] }, "blockedHint": "The tiny lock seems to be waiting for a more exact answer." },
         { "label": "Return to the market", "destination": "market-street" }
       ]
     },
@@ -120,8 +210,8 @@
       "location": "Heath Lane",
       "art": { "src": "assets/scenes/locked-road.png", "alt": "The now-open gate on the road to Heath Lane." },
       "text": [
-        "The lock clicks open with theatrical reluctance. Beyond it lies Heath Lane—and, at last, the proper adventure.",
-        "This is the end of the first small chapter. Mario Puzo remains at large, presumably arranging something unnecessarily complicated."
+        "The lock clicks open with theatrical reluctance. Beyond it lies Heath Lane—the current end of the route, and at last the proper adventure.",
+        "You have reached the immediate goal by following clues, helping a stranded cart, and obtaining a key with exactly the right amount of confidence. Mario Puzo remains at large, presumably arranging something unnecessarily complicated."
       ],
       "choices": [{ "label": "Start the chapter again", "destination": "city-gates" }]
     },

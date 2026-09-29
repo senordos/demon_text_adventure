@@ -22,7 +22,7 @@ The eventual data model will contain a generic `characters` catalogue and let a 
 | --- | --- |
 | Stable ID | Lowercase, hyphenated content identifier. |
 | Working name | The current authoring name; later replace if a fictional public name is chosen. |
-| Status | Draft, approved, or retired. |
+| Status | Draft, implemented first encounter, approved, or retired. |
 | Role and home base | Occupation, shop/house/area, and likely map location. |
 | Visual direction | Short EGA-art direction and local-only reference filename, if one exists. |
 | Skills and limits | What this person can help with and what prevents them simply solving the game. |
@@ -49,19 +49,19 @@ The eventual data model will contain a generic `characters` catalogue and let a 
 | Maxim relationship | Can teach a formal or archaic maxim whose precise wording matters. |
 | Scene use | A consultation scene, followed later by a consequence of her advice rather than repeated exposition. |
 
-### Christian — draft
+### Christian — implemented first encounter
 
 | Field | Current design direction |
 | --- | --- |
 | Stable ID | `christian-wheelwright` |
-| Role and home base | A carriage, wheel, and mechanical-repair specialist; workshop location to be decided. |
-| Visual direction | Local-only reference: `original_assets/photos/christian_EGA.jpg`. Public character art still requires approval. |
+| Role and home base | A carriage, wheel, and mechanical-repair specialist at Señor Dos' Garage on Christian Street. |
+| Visual direction | Local-only reference: `original_assets/photos/christian_EGA.jpg`. The game currently uses an approved 320×200 strict-16-colour EGA garage scene derived from this direction. |
 | Skills | Diagnoses wheels, axles, gates, pulleys, winches, ropes, and other practical contraptions; offers grounded engineering advice. |
 | Limits | Needs the correct parts, a safe working space, or a reason not to repair something in the most expensive possible way. |
 | Voice | Practical, curious, and ready with an analogy involving a wheel that has definitely failed before. |
-| Story anchors | Explains or repairs a mechanical obstacle; identifies the tool or component needed to proceed; offers a non-obvious route based on how something is built. |
+| Story anchors | Turns the brass key blank and East Street lock-pattern rubbing into the Heath Lane key; explains why a normal key will not satisfy the gate. |
 | Maxim relationship | Can teach a practical saying about preparation, leverage, or not trusting a wheel simply because it is round. |
-| Scene use | Workshop introduction, a later engineered obstacle, and an optional return visit after the relevant part is found. |
+| Scene use | Christian Street arrival, Señor Dos' Garage introduction/advice, and the key-cutting exchange after the player brings both materials. |
 
 ### Other drafted visual references
 

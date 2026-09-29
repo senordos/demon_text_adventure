@@ -2,124 +2,100 @@
 # Edit this file, then run: ruby scripts/render-story-map.rb
 title: Demon — current playable story map
 nodes:
-  introduction:
-    type: start
-    label: "The King's request"
-    screen: introduction
-  city-gates:
-    type: location
-    label: "City Gates"
-    screen: city-gates
-  low-street:
-    type: location
-    label: "Low Street"
-    screen: low-street
-  low-street-key:
+  introduction: { type: start, label: "The King's request", screen: introduction }
+  city-gates: { type: location, label: "City Gates", screen: city-gates }
+  low-street: { type: location, label: "Low Street (optional)", screen: low-street }
+  market-street: { type: location, label: "Market Street", screen: market-street }
+  market-key:
     type: discovery
-    label: "Find the brass key"
-    screen: low-street-key
-    gives:
-      items: [brass-key]
-  market-street:
-    type: location
-    label: "Market Street"
-    screen: market-street
+    label: "Acquire brass key blank"
+    screen: market-key
+    gives: { items: [brass-key] }
   market-intro:
     type: encounter
-    label: "Gatekeeper's advice"
+    label: "Gatekeeper's route advice"
     screen: market-intro
-    gives:
-      knowledge: [heath-lane-lock]
+    gives: { knowledge: [christian-street-route] }
+  east-street:
+    type: checkpoint
+    label: "East Street delivery cart"
+    screen: east-street
+    requires: { items: [brass-key] }
+  east-street-cleared:
+    type: discovery
+    label: "Acquire lock-pattern rubbing"
+    screen: east-street-cleared
+    gives: { items: [lock-pattern-rubbing] }
+  christian-street: { type: location, label: "Christian Street", screen: christian-street }
+  senor-dos-garage: { type: encounter, label: "Señor Dos' Garage", screen: senor-dos-garage }
+  garage-advice: { type: encounter, label: "Christian's engineering advice", screen: garage-advice }
+  garage-key-made:
+    type: discovery
+    label: "Acquire Heath Lane key"
+    screen: garage-key-made
+    requires: { items: [brass-key, lock-pattern-rubbing] }
+    gives: { items: [heath-lane-key] }
   locked-road:
     type: checkpoint
     label: "Heath Lane gate"
     screen: locked-road
-    requires:
-      items: [brass-key]
-  heath-lane:
-    type: chapter-end
-    label: "Heath Lane — chapter complete"
-    screen: heath-lane
-  harbour-street:
-    type: location
-    label: "Harbour Street"
-    screen: harbour-street
-  gate-failure:
-    type: failure
-    label: "Lose to the City Gates"
-    screen: gate-failure
+    requires: { items: [heath-lane-key] }
+  heath-lane: { type: chapter-end, label: "Heath Lane — current goal reached", screen: heath-lane }
+  harbour-street: { type: location, label: "Harbour Street (optional)", screen: harbour-street }
+  gate-failure: { type: failure, label: "Lose to the City Gates", screen: gate-failure }
 edges:
-  - from: introduction
-    to: city-gates
-    label: "Continue"
-  - from: city-gates
-    to: market-street
-    label: "Market Street"
-  - from: city-gates
-    to: low-street
-    label: "Low Street"
-  - from: city-gates
-    to: harbour-street
-    label: "Harbour Street"
-  - from: city-gates
-    to: gate-failure
-    label: "Walk into the gate"
-  - from: gate-failure
-    to: city-gates
-    label: "Try again"
-  - from: low-street
-    to: low-street-key
-    label: "Collect key"
-  - from: low-street
-    to: city-gates
-    label: "Return"
-  - from: low-street
-    to: market-street
-    label: "Market"
-  - from: low-street-key
-    to: market-intro
-    label: "Ask the man"
-  - from: low-street-key
-    to: market-street
-    label: "Market"
-  - from: low-street-key
-    to: city-gates
-    label: "Return"
-  - from: market-street
-    to: market-intro
-    label: "Ask Gatekeeper"
-  - from: market-street
-    to: locked-road
-    label: "Try locked road"
-  - from: market-street
-    to: low-street
-    label: "Low Street"
-  - from: market-street
-    to: city-gates
-    label: "Return"
-  - from: market-intro
-    to: locked-road
-    label: "Go to gate"
-  - from: market-intro
-    to: market-street
-    label: "Return to market"
-  - from: market-intro
-    to: city-gates
-    label: "Return"
+  - { from: introduction, to: city-gates, label: Continue }
+  - { from: city-gates, to: market-street, label: Market Street }
+  - { from: city-gates, to: low-street, label: Low Street }
+  - { from: city-gates, to: harbour-street, label: Harbour Street }
+  - { from: city-gates, to: gate-failure, label: Walk into the gate }
+  - { from: gate-failure, to: city-gates, label: Try again }
+  - { from: low-street, to: city-gates, label: Return }
+  - { from: low-street, to: market-street, label: Market }
+  - { from: market-street, to: market-key, label: Buy brass key }
+  - { from: market-street, to: market-intro, label: Ask Gatekeeper }
+  - { from: market-street, to: east-street, label: East Street }
+  - { from: market-street, to: locked-road, label: Try Heath Lane gate }
+  - { from: market-street, to: low-street, label: Low Street }
+  - { from: market-street, to: city-gates, label: Return }
+  - { from: market-key, to: market-intro, label: Ask Gatekeeper }
+  - { from: market-key, to: east-street, label: East Street }
+  - { from: market-key, to: market-street, label: Return }
+  - { from: market-intro, to: east-street, label: East Street }
+  - { from: market-intro, to: locked-road, label: Try Heath Lane gate }
+  - { from: market-intro, to: market-street, label: Return to market }
+  - { from: market-intro, to: city-gates, label: Return }
+  - from: east-street
+    to: east-street-cleared
+    label: Chock wheel
+    requires: { items: [brass-key] }
+  - from: east-street
+    to: christian-street
+    label: Christian Street
+    requires: { items: [lock-pattern-rubbing] }
+  - { from: east-street, to: market-street, label: Return }
+  - { from: east-street-cleared, to: christian-street, label: Christian Street }
+  - { from: east-street-cleared, to: market-street, label: Return }
+  - { from: christian-street, to: senor-dos-garage, label: Enter garage }
+  - { from: christian-street, to: east-street, label: Return to East Street }
+  - from: senor-dos-garage
+    to: garage-key-made
+    label: Cut Heath Lane key
+    requires: { items: [brass-key, lock-pattern-rubbing] }
+  - { from: senor-dos-garage, to: garage-advice, label: Ask for advice }
+  - { from: senor-dos-garage, to: christian-street, label: Return }
+  - from: garage-advice
+    to: garage-key-made
+    label: Cut Heath Lane key
+    requires: { items: [brass-key, lock-pattern-rubbing] }
+  - { from: garage-advice, to: christian-street, label: Return }
+  - { from: garage-key-made, to: christian-street, label: Thank Christian }
+  - { from: garage-key-made, to: east-street, label: East Street }
   - from: locked-road
     to: heath-lane
-    label: "Use brass key"
-    requires:
-      items: [brass-key]
-  - from: locked-road
-    to: market-street
-    label: "Return"
-  - from: heath-lane
-    to: city-gates
-    label: "Restart chapter"
-  - from: harbour-street
-    to: city-gates
-    label: "Return"
-  - from: harbour-street
-    to: market-street
-    label: "Market"
+    label: Open gate
+    requires: { items: [heath-lane-key] }
+  - { from: locked-road, to: market-street, label: Return }
+  - { from: heath-lane, to: city-gates, label: Restart chapter }
+  - { from: harbour-street, to: city-gates, label: Return }
+  - { from: harbour-street, to: market-street, label: Market }

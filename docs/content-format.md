@@ -27,6 +27,17 @@ Each choice has a visible `label` and a `destination` screen ID. `@resume` is th
 }
 ```
 
+When a choice has `requires`, keep the route visible to the player by adding a `blockedHint`. The engine disables it and displays the hint without naming the requirement. This is how an adventure gate remains discoverable without giving away its answer.
+
+```json
+{
+  "label": "Open the Heath Lane gate",
+  "destination": "heath-lane",
+  "requires": { "items": ["heath-lane-key"] },
+  "blockedHint": "The tiny lock seems to be waiting for a more exact answer."
+}
+```
+
 ## Supported requirements
 
 - `items`: every named item must be held.

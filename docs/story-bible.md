@@ -15,10 +15,11 @@ The Princess of Gaalway has been kidnapped by Mario Puzo. The King gives the pla
 The existing prototype is a deliberately small first chapter, not the complete plot:
 
 1. The player leaves the City Gates and may explore Low Street, Market Street, or Harbour Street.
-2. Low Street supplies the brass key.
-3. Market Street and the Gatekeeper point the player toward the locked route to Heath Lane.
-4. The brass key opens the Heath Lane gate.
-5. Heath Lane ends the chapter while the larger rescue remains unresolved.
+2. Market Street supplies a brass key blank and the Gatekeeper's clue towards East Street and Christian Street.
+3. On East Street, the brass key safely chocks a runaway delivery cart; its driver rewards the player with a rubbing of the lock pattern.
+4. Christian at Señor Dos' Garage uses the brass key blank and rubbing to cut the specific Heath Lane key.
+5. The Heath Lane gate visibly remains a blocked opportunity until the newly cut key is held.
+6. Heath Lane is the current chapter goal while the larger rescue remains unresolved.
 
 The current graph is in [the story map](story-map.md). The Gatekeeper's advice is useful direction, but the only presently enforced checkpoint is the brass key.
 
@@ -35,7 +36,7 @@ Find the route to the Princess
   → reach the final defence and rescue the Princess
 ```
 
-Claire and Christian are draft story anchors, not yet part of the playable slice. Claire makes a legal restriction intelligible and may provide formal authority once the player supplies the right evidence. Christian explains and resolves a mechanical problem once the player has the necessary component or information. The player still assembles the solution; no character should solve the game on their behalf.
+Claire is a draft story anchor, not yet part of the playable slice. She will make a legal restriction intelligible and may provide formal authority once the player supplies the right evidence. Christian is now the first implemented named-character anchor: he resolves the Heath Lane key problem only after the player brings the brass key blank and lock-pattern rubbing. The player still assembles the solution; no character should solve the game on their behalf.
 
 ## Backbone rules
 

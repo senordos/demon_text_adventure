@@ -18,6 +18,18 @@ items:
     name: Sword
     source: original-manual
     description: "A starting sword. Its precise usefulness is yet to be written."
+  brass-key:
+    name: Brass key blank
+    source: new-story-content
+    description: "Market Street material that can be cut into a more specific key."
+  lock-pattern-rubbing:
+    name: Lock-pattern rubbing
+    source: new-story-content
+    description: "East Street evidence that gives the correct teeth for a key."
+  heath-lane-key:
+    name: Heath Lane key
+    source: new-story-content
+    description: "A specific key cut at Señor Dos' Garage from the brass blank and rubbing."
 
 locations:
   city-gates:

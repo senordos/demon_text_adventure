@@ -50,6 +50,9 @@ function validateGame(definition) {
       for (const itemId of choice.requires?.items ?? []) {
         if (!definition.items[itemId]) throw new Error(`Choice '${choice.label}' requires an unknown item.`);
       }
+      if (choice.blockedHint !== undefined && typeof choice.blockedHint !== "string") {
+        throw new Error(`Choice '${choice.label}' on '${screenId}' has an invalid blocked hint.`);
+      }
       validateEffects(choice.effects, `Choice '${choice.label}'`);
     }
     validateEffects(screen.onEnter, `Screen '${screenId}'`);
@@ -120,21 +123,27 @@ function render() {
   document.querySelector("#gold").textContent = state.gold;
   document.querySelector("#health").textContent = "♥ ".repeat(state.health).trim();
   document.querySelector("#inventory").textContent = displayInventory();
-  const choices = screen.choices.filter(choice => meetsRequirements(choice.requires));
+  const choices = screen.choices;
+  const availableChoices = choices.filter(choice => meetsRequirements(choice.requires));
   const choicePreview = document.querySelector("#choice-preview");
-  choicePreview.hidden = isSplash || choices.length === 0;
-  choicePreview.textContent = choices.length
-    ? `1. ${choices[0].label}${choices.length > 1 ? " (+ more)" : ""}`
+  const firstAvailableChoice = availableChoices[0];
+  const firstAvailableNumber = choices.indexOf(firstAvailableChoice) + 1;
+  choicePreview.hidden = isSplash || !firstAvailableChoice;
+  choicePreview.textContent = firstAvailableChoice
+    ? `${firstAvailableNumber}. ${firstAvailableChoice.label}${choices.length > 1 ? " (+ more)" : ""}`
     : "";
   choicePreview.setAttribute("aria-expanded", String(choosing));
   const choiceList = document.querySelector("#choices");
   choiceList.innerHTML = "";
   choices.forEach(choice => {
+    const available = meetsRequirements(choice.requires);
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = choice.label;
-    button.addEventListener("click", () => goTo(choice.destination, choice.effects));
+    button.textContent = available ? choice.label : `${choice.label} — ${choice.blockedHint ?? "Something is still missing."}`;
+    button.disabled = !available;
+    if (available) button.addEventListener("click", () => goTo(choice.destination, choice.effects));
     const item = document.createElement("li");
+    item.classList.toggle("is-blocked", !available);
     item.append(button);
     choiceList.append(item);
   });
@@ -184,7 +193,7 @@ document.addEventListener("keydown", event => {
     render();
     return;
   }
-  buttons[choice - 1].click();
+  if (!buttons[choice - 1].disabled) buttons[choice - 1].click();
 });
 
 const mapDialog = document.querySelector("#map-dialog");
