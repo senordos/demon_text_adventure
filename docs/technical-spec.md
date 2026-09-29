@@ -27,7 +27,7 @@ The deliberate non-framework choice keeps the game close to its GW-BASIC roots: 
 
 - Present one illustrated text-adventure **screen** at a time.
 - Offer numbered choices (`1`–`9`) that work by click/tap and keyboard.
-- Show concise location/status text, a 320×200 EGA-style scene illustration, choices, and a compact persistent status panel.
+- Show concise location/status text, a 320×200 scene illustration restricted to the fixed 16-colour EGA palette, choices, and a compact persistent status panel.
 - Preserve the original palette principle: situation/location in red, choices in green, with accessible contrast and no colour-only meaning.
 - Support restart, undo last decision (where technically safe), save/continue, and an optional “start fresh” mode.
 - Be deterministic by default: the same choices from the same state yield the same result. Any later randomness must be declared in content and seeded for replayability.
@@ -39,6 +39,7 @@ The deliberate non-framework choice keeps the game close to its GW-BASIC roots: 
 - On a typical laptop viewport (minimum target: 1280×720), keep an active gameplay screen—including scene art, narrative, choices, status, and controls—within one viewport. Use a two-column composition: 320×200 scene art on the left, description on the right, choices beneath the description, and the compact status/footer controls below.
 - On modern-phone portrait screens, use **iPhone 14 Pro portrait (393×852 CSS pixels)** as the baseline. The scene art is a full-width, un-cropped 16:10 visual header anchored to the top, with no separate gameplay masthead. The location and narrative always begin in a distinct panel beneath the image. Reading mode shows the image and narrative; choosing mode retains the image but replaces the narrative area with large bottom-aligned choices. A **Choices**/**Read story** control switches between these modes. Keep choices at least 44 CSS pixels high for comfortable touch input. The anchored status/footer remains visible at the bottom.
 - Fixed-screen content budget: a normal mobile gameplay scene should use no more than two short narrative paragraphs and four choices. A scene requiring more should be split into a follow-on scene or use a short deliberate “continue” choice; it must not introduce scrolling or clip essential controls. Narrative is intentionally replaced, never partly obscured, while the choice drawer is open.
+- The live scene files in `assets/scenes/` are strict 16-colour EGA PNGs at 320×200. Their original full-colour source versions are retained unchanged in `assets/scenes/original-colour/` for comparison or future reworking. Palette conversion uses the standard EGA sixteen colours with no dithering, so all scene pixels remain crisp and legible.
 
 ## 4. Engine model
 

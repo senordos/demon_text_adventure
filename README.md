@@ -23,7 +23,7 @@ python3 -m http.server 8000
 
 Then open [http://localhost:8000](http://localhost:8000). Choose options by clicking or pressing their number keys. Progress is saved in the browser; use **Start again** to reset it.
 
-The current build is a deliberately short vertical slice: City Gates, Low Street, the Market, a comic character, an item, a blocked route, and a failure/restart path. Its five original scene illustrations are displayed at 320×200 source resolution with crisp pixel scaling.
+The current build is a deliberately short vertical slice: City Gates, Low Street, the Market, a comic character, an item, a blocked route, and a failure/restart path. Its scene illustrations are displayed at 320×200 source resolution with crisp pixel scaling and the strict 16-colour EGA palette. The full-colour source versions are preserved in `assets/scenes/original-colour/`.
 
 `game.js` is now a generic runtime: it loads `content/demon.json`, keeps state, renders screens, applies generic item/status effects, and saves progress. It contains no Demon story text, routes, item names, or artwork paths. To write or alter the game, edit the JSON definition and refresh the local server. The browser validates broken screen and item references when the game starts.
 
