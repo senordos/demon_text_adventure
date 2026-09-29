@@ -16,7 +16,7 @@ This is the best first release format: it feels app-like, works everywhere, is v
 | UI | Plain HTML/CSS plus small TypeScript modules; no framework dependency initially |
 | Build | Vite |
 | Runtime | Modern evergreen browsers (mobile and desktop) |
-| Content format | YAML source files, validated and compiled to JSON during the build |
+| Content format | A data-only JSON game definition loaded by the runtime; YAML authoring can be added later if it compiles to the same JSON format |
 | Persistence | `localStorage`, with an export/import save option later |
 | Offline | Web app manifest and service worker generated at build time |
 | Automated checks | Unit tests for state rules and content validation; browser smoke test for a full winning route |
@@ -58,7 +58,7 @@ At every turn the engine will:
 4. Apply the selected choice's effects atomically.
 5. Persist the resulting state locally.
 
-Content owns story text, choices, requirements, effects, characters, items, endings, and scene-art references. The engine owns only generic rules, rendering, input, persistence, and validation. This separation means story changes do not require engine changes.
+Content owns story text, choices, requirements, effects, characters, items, endings, and scene-art references. The engine owns only generic rules, rendering, input, persistence, and validation. This separation means story changes do not require engine changes. The first implementation is `content/demon.json`; see `docs/content-format.md` for the author-facing schema.
 
 ## 5. Repository shape when implementation begins
 

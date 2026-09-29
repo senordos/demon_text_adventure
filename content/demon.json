@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "id": "demon",
+    "title": "Demon: The Ultimate Text Adventure",
+    "saveKey": "demon-style-prototype-v2",
+    "splashDurationMs": 3000
+  },
+  "playerStart": {
+    "screen": "city-gates",
+    "gold": 100,
+    "health": 3,
+    "inventory": ["sword"],
+    "flags": {}
+  },
+  "items": {
+    "sword": {
+      "name": "Sword",
+      "description": "A starting sword. Its precise usefulness is yet to be written."
+    },
+    "brass-key": {
+      "name": "Brass key",
+      "description": "A small key labelled NOT THE PRINCESS KEY."
+    }
+  },
+  "screens": {
+    "splash": {
+      "location": "",
+      "autoAdvance": "introduction",
+      "art": { "src": "assets/scenes/title-splash.png", "alt": "The open City Gates of Gaalway at dusk." },
+      "text": [],
+      "choices": []
+    },
+    "introduction": {
+      "location": "The King's request",
+      "art": { "src": "assets/scenes/city-gates.png", "alt": "The open City Gates of Gaalway at dusk." },
+      "text": [
+        "The Princess of Gaalway has been kidnapped by the evil Mario Puzo. The King has selected you for the rescue because you were the only person near the palace who owned a sword.",
+        "It is a perfectly adequate reason to begin an adventure."
+      ],
+      "choices": [{ "label": "Continue the adventure", "destination": "@resume" }]
+    },
+    "city-gates": {
+      "location": "City Gates",
+      "art": { "src": "assets/scenes/city-gates.png", "alt": "The open City Gates of Gaalway at dusk." },
+      "text": [
+        "You are standing at the City Gates of Gaalway. The gate is open, which is a surprisingly generous definition of security.",
+        "The King has given you 100 gold pieces and a sword to rescue his daughter from the evil Mario Puzo. The sword looks professionally sharp. The plan does not."
+      ],
+      "choices": [
+        { "label": "Go up Market Street", "destination": "market-street" },
+        { "label": "Go down Low Street", "destination": "low-street" },
+        { "label": "Go down Harbour Street", "destination": "harbour-street" },
+        { "label": "Get so confused that you walk into the gate", "destination": "gate-failure" }
+      ]
+    },
+    "low-street": {
+      "location": "Low Street",
+      "art": { "src": "assets/scenes/low-street.png", "alt": "The crooked shops and bench of Low Street." },
+      "text": [
+        "Low Street is named after its low buildings, low prices, and the astonishingly low expectations of its town planner.",
+        "A small brass object glints beneath a bench. No one is looking, which is how objects traditionally ask to be collected."
+      ],
+      "choices": [
+        { "label": "Pick up the brass key", "destination": "low-street-key" },
+        { "label": "Return to City Gates", "destination": "city-gates" },
+        { "label": "Go to the Market", "destination": "market-street" }
+      ]
+    },
+    "low-street-key": {
+      "location": "Low Street",
+      "art": { "src": "assets/scenes/low-street.png", "alt": "A brass key glinting beneath a bench on Low Street." },
+      "onEnter": [{ "type": "add-item", "item": "brass-key" }],
+      "text": [
+        "You acquire a small brass key. It is labelled: ‘NOT THE PRINCESS KEY’. This is either helpful or the work of a very organised villain.",
+        "From the pub doorway, a man applauds politely. ‘Excellent collection technique,’ he says. ‘Seven out of ten. You bent your knees.’"
+      ],
+      "choices": [
+        { "label": "Ask the man who he is", "destination": "market-intro" },
+        { "label": "Go to the Market", "destination": "market-street" },
+        { "label": "Return to City Gates", "destination": "city-gates" }
+      ]
+    },
+    "market-street": {
+      "location": "Market Street",
+      "art": { "src": "assets/scenes/market-street.png", "alt": "The bustling Market Street of Gaalway." },
+      "text": [
+        "Market Street is busy with traders selling turnips, maps of other streets, and one very determined umbrella.",
+        "At the centre stands the Gatekeeper, wearing a helmet, a teapot, and the expression of a man interrupted during both lunch and philosophy."
+      ],
+      "choices": [
+        { "label": "Ask the Gatekeeper about Mario Puzo", "destination": "market-intro" },
+        { "label": "Try the locked road towards Heath Lane", "destination": "locked-road" },
+        { "label": "Go to Low Street", "destination": "low-street" },
+        { "label": "Return to City Gates", "destination": "city-gates" }
+      ]
+    },
+    "market-intro": {
+      "location": "Market Street",
+      "art": { "src": "assets/scenes/market-street.png", "alt": "The Market Street gatekeeper with a helmet and teapot." },
+      "text": [
+        "‘Mario Puzo?’ says the Gatekeeper. ‘Terrible fellow. Keeps locking roads and calling it interior design.’",
+        "He points north. ‘Heath Lane is closed by a tiny, very important lock. You look like someone carrying a key that has an unnecessary label.’"
+      ],
+      "choices": [
+        { "label": "Go to the locked road", "destination": "locked-road" },
+        { "label": "Thank him and return to the market", "destination": "market-street" },
+        { "label": "Return to City Gates", "destination": "city-gates" }
+      ]
+    },
+    "locked-road": {
+      "location": "Road to Heath Lane",
+      "art": { "src": "assets/scenes/locked-road.png", "alt": "A tiny locked gate blocking the road to Heath Lane." },
+      "text": ["A petite iron gate blocks the way. Its lock is no bigger than a biscuit, though likely less crumbly."],
+      "choices": [
+        { "label": "Use the brass key", "destination": "heath-lane", "requires": { "items": ["brass-key"] } },
+        { "label": "Return to the market", "destination": "market-street" }
+      ]
+    },
+    "heath-lane": {
+      "location": "Heath Lane",
+      "art": { "src": "assets/scenes/locked-road.png", "alt": "The now-open gate on the road to Heath Lane." },
+      "text": [
+        "The lock clicks open with theatrical reluctance. Beyond it lies Heath Lane—and, at last, the proper adventure.",
+        "This is the end of the first small chapter. Mario Puzo remains at large, presumably arranging something unnecessarily complicated."
+      ],
+      "choices": [{ "label": "Start the chapter again", "destination": "city-gates" }]
+    },
+    "harbour-street": {
+      "location": "Harbour Street",
+      "art": { "src": "assets/scenes/harbour-street.png", "alt": "Gaalway's harbour street, with a boat and tall masts." },
+      "text": ["The harbour smells of salt, rope, and an argument about haddock. A ferryman waves, then charges you a wave fee."],
+      "choices": [
+        { "label": "Return to City Gates", "destination": "city-gates" },
+        { "label": "Go to the Market", "destination": "market-street" }
+      ]
+    },
+    "gate-failure": {
+      "location": "City Gates",
+      "art": { "src": "assets/scenes/city-gates.png", "alt": "The City Gates of Gaalway, shortly before an avoidable collision." },
+      "text": ["You become so confused that you walk directly into the gate. The gate wins decisively.", "The Princess remains kidnapped. The gate has no comment."],
+      "choices": [{ "label": "Try again, with less gate", "destination": "city-gates" }]
+    }
+  }
+}
