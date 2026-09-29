@@ -13,6 +13,8 @@ This repository begins with the surviving manual and city map in `original_asset
 - [Content format](docs/content-format.md) — how to edit a game definition without changing the runtime engine.
 - [Maxim-duel system](docs/maxim-duel-spec.md) — the planned language-and-sword challenge mechanic.
 - [Character bible](docs/character-bible.md) — named-character profiles, story anchors, and the path from profiles to scenes.
+- [Story bible](docs/story-bible.md) — lore, plot backbone, and authoring rules for the full adventure.
+- [Story map](docs/story-map.md) — generated Mermaid view of the current playable route and checkpoints.
 - [Source inventory](docs/source-inventory.md) — what was recovered from each original asset.
 
 ## Try the first prototype

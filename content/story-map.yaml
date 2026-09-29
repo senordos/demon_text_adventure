@@ -1,0 +1,125 @@
+# Design-time story graph. This is not loaded by the browser yet.
+# Edit this file, then run: ruby scripts/render-story-map.rb
+title: Demon — current playable story map
+nodes:
+  introduction:
+    type: start
+    label: "The King's request"
+    screen: introduction
+  city-gates:
+    type: location
+    label: "City Gates"
+    screen: city-gates
+  low-street:
+    type: location
+    label: "Low Street"
+    screen: low-street
+  low-street-key:
+    type: discovery
+    label: "Find the brass key"
+    screen: low-street-key
+    gives:
+      items: [brass-key]
+  market-street:
+    type: location
+    label: "Market Street"
+    screen: market-street
+  market-intro:
+    type: encounter
+    label: "Gatekeeper's advice"
+    screen: market-intro
+    gives:
+      knowledge: [heath-lane-lock]
+  locked-road:
+    type: checkpoint
+    label: "Heath Lane gate"
+    screen: locked-road
+    requires:
+      items: [brass-key]
+  heath-lane:
+    type: chapter-end
+    label: "Heath Lane — chapter complete"
+    screen: heath-lane
+  harbour-street:
+    type: location
+    label: "Harbour Street"
+    screen: harbour-street
+  gate-failure:
+    type: failure
+    label: "Lose to the City Gates"
+    screen: gate-failure
+edges:
+  - from: introduction
+    to: city-gates
+    label: "Continue"
+  - from: city-gates
+    to: market-street
+    label: "Market Street"
+  - from: city-gates
+    to: low-street
+    label: "Low Street"
+  - from: city-gates
+    to: harbour-street
+    label: "Harbour Street"
+  - from: city-gates
+    to: gate-failure
+    label: "Walk into the gate"
+  - from: gate-failure
+    to: city-gates
+    label: "Try again"
+  - from: low-street
+    to: low-street-key
+    label: "Collect key"
+  - from: low-street
+    to: city-gates
+    label: "Return"
+  - from: low-street
+    to: market-street
+    label: "Market"
+  - from: low-street-key
+    to: market-intro
+    label: "Ask the man"
+  - from: low-street-key
+    to: market-street
+    label: "Market"
+  - from: low-street-key
+    to: city-gates
+    label: "Return"
+  - from: market-street
+    to: market-intro
+    label: "Ask Gatekeeper"
+  - from: market-street
+    to: locked-road
+    label: "Try locked road"
+  - from: market-street
+    to: low-street
+    label: "Low Street"
+  - from: market-street
+    to: city-gates
+    label: "Return"
+  - from: market-intro
+    to: locked-road
+    label: "Go to gate"
+  - from: market-intro
+    to: market-street
+    label: "Return to market"
+  - from: market-intro
+    to: city-gates
+    label: "Return"
+  - from: locked-road
+    to: heath-lane
+    label: "Use brass key"
+    requires:
+      items: [brass-key]
+  - from: locked-road
+    to: market-street
+    label: "Return"
+  - from: heath-lane
+    to: city-gates
+    label: "Restart chapter"
+  - from: harbour-street
+    to: city-gates
+    label: "Return"
+  - from: harbour-street
+    to: market-street
+    label: "Market"

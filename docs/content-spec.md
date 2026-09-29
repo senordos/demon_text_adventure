@@ -36,6 +36,8 @@ The schematic topology in `content/world.yaml` is intentionally an initial inter
 
 The canonical street graph and placement metadata live in `docs/world-graph.md`. The playable map, content data, and future navigation choices must follow that document.
 
+The narrative dependency graph lives separately in `content/story-map.yaml` and is rendered for review in `docs/story-map.md`. Add new route requirements, character contributions, maxim learning, and rewards there before implementing their screens.
+
 ## 4. Story arc (first draft)
 
 | Act | Player goal | Tentative comic material |

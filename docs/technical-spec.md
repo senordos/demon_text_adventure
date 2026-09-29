@@ -69,10 +69,13 @@ The maxim-duel extension follows the same separation. The engine will understand
 ```text
 content/             Author-written story source and scene-art references
   world.yaml          World topology and initial state
+  story-map.yaml      Design-time narrative nodes, routes, gates, and rewards
   locations/          One file per location
   items.yaml
   characters.yaml
 docs/                Decisions, specs, source inventory, writing notes
+  story-map.md        Generated Mermaid view of the narrative graph
+  story-bible.md      Lore and plot backbone
 src/                 Generic game engine and browser UI
 tests/               Engine and content-route tests
 public/              Manifest, icons, and other static release assets
