@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#171313" />
     <title>Demon: The Ultimate Text Adventure</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body>
     <main class="game-shell">
@@ -22,21 +22,23 @@
           <p id="location" class="location"></p>
           <div id="narrative" class="narrative"></div>
         </div>
-        <p id="prompt" class="prompt">What do you do?</p>
         <ol id="choices" class="choices" aria-label="Available choices"></ol>
       </section>
 
-      <aside class="status" aria-label="Current adventure status">
-        <div><span>GOLD</span><strong id="gold">100</strong></div>
-        <div><span>HEALTH</span><strong id="health">♥ ♥ ♥</strong></div>
-        <div class="inventory"><span>IN YOUR HANDS</span><strong id="inventory">Sword</strong></div>
-      </aside>
-
-      <footer>
-        <span id="controls-hint">Press a number or select a choice</span>
+      <footer class="game-footer">
+        <aside class="status" aria-label="Current adventure status">
+          <div><span>GOLD</span><strong id="gold">100</strong></div>
+          <div><span>HEALTH</span><strong id="health">♥ ♥ ♥</strong></div>
+          <div class="inventory"><span>IN YOUR HANDS</span><strong id="inventory">Sword</strong></div>
+        </aside>
         <div class="footer-actions">
-          <button id="map-button" type="button" aria-haspopup="dialog">View street map</button>
-          <button id="restart" type="button">Start again</button>
+          <button id="choice-toggle" class="choice-toggle" type="button" aria-controls="choices" aria-expanded="false">Choices</button>
+          <button id="restart" class="icon-button" type="button" aria-label="Start again" title="Start again">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8V3l-2.2 2.2A8 8 0 1 0 20 12h-2.5a5.5 5.5 0 1 1-2.45-4.58L12 10h7z" /></svg>
+          </button>
+          <button id="map-button" class="icon-button" type="button" aria-haspopup="dialog" aria-label="View street map" title="View street map">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 5 5-2 8 3 5-2v15l-5 2-8-3-5 2V5zm5-2v15m8-12v15" /><path d="M8 7c2 1 4 1.8 8 1" /></svg>
+          </button>
         </div>
       </footer>
     </main>

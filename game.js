@@ -6,6 +6,7 @@ let game;
 let state;
 let resumeState;
 let splashTimer;
+let choosing = false;
 
 function clone(value) { return JSON.parse(JSON.stringify(value)); }
 
@@ -95,6 +96,7 @@ function goTo(destination, effects = []) {
     state.screen = destination;
     applyEffects(game.screens[state.screen].onEnter);
   }
+  choosing = false;
   resumeState = clone(state);
   saveState();
   render();
@@ -109,7 +111,7 @@ function render() {
   const screen = game.screens[state.screen];
   const isSplash = state.screen === "splash";
   document.querySelector(".game-shell").classList.toggle("is-splash", isSplash);
-  document.querySelector("#controls-hint").textContent = isSplash ? "The adventure begins shortly" : "Press a number or select a choice";
+  document.querySelector(".game-shell").classList.toggle("is-choosing", choosing && !isSplash);
   const artwork = document.querySelector("#art");
   artwork.src = screen.art.src;
   artwork.alt = screen.art.alt;
@@ -130,7 +132,9 @@ function render() {
     item.append(button);
     choiceList.append(item);
   });
-  document.querySelector("#prompt").hidden = isSplash;
+  const choiceToggle = document.querySelector("#choice-toggle");
+  choiceToggle.textContent = choosing ? "Read story" : `Choices (${choices.length})`;
+  choiceToggle.setAttribute("aria-expanded", String(choosing));
   if (screen.autoAdvance) {
     splashTimer = window.setTimeout(() => {
       state = { ...resumeState, screen: screen.autoAdvance };
@@ -154,6 +158,7 @@ async function start() {
     document.querySelector("#restart").addEventListener("click", () => {
       resumeState = defaultState();
       state = { ...resumeState, screen: "splash" };
+      choosing = false;
       render();
     });
     render();
@@ -173,5 +178,9 @@ document.addEventListener("keydown", event => {
 const mapDialog = document.querySelector("#map-dialog");
 document.querySelector("#map-button").addEventListener("click", () => mapDialog.showModal());
 document.querySelector("#close-map").addEventListener("click", () => mapDialog.close());
+document.querySelector("#choice-toggle").addEventListener("click", () => {
+  choosing = !choosing;
+  render();
+});
 
 start();
