@@ -12,6 +12,7 @@ This repository begins with the surviving manual and city map in `original_asset
 - [Playable game definition](content/demon.json) — all current screens, text, artwork references, choices, item definitions, requirements, and effects.
 - [Content format](docs/content-format.md) — how to edit a game definition without changing the runtime engine.
 - [Maxim-duel system](docs/maxim-duel-spec.md) — the planned language-and-sword challenge mechanic.
+- [Character bible](docs/character-bible.md) — named-character profiles, story anchors, and the path from profiles to scenes.
 - [Source inventory](docs/source-inventory.md) — what was recovered from each original asset.
 
 ## Try the first prototype

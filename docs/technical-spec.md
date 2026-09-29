@@ -60,7 +60,7 @@ At every turn the engine will:
 4. Apply the selected choice's effects atomically.
 5. Persist the resulting state locally.
 
-Content owns story text, choices, requirements, effects, characters, items, endings, and scene-art references. The engine owns only generic rules, rendering, input, persistence, and validation. This separation means story changes do not require engine changes. The first implementation is `content/demon.json`; see `docs/content-format.md` for the author-facing schema.
+Content owns story text, choices, requirements, effects, characters, items, endings, and scene-art references. The engine owns only generic rules, rendering, input, persistence, and validation. This separation means story changes do not require engine changes. The first implementation is `content/demon.json`; see `docs/content-format.md` for the author-facing schema. Named-character creative continuity is held in `docs/character-bible.md`; the future data catalogue will use stable character IDs so scenes can refer to profiles without duplicating them.
 
 The maxim-duel extension follows the same separation. The engine will understand a generic learned-maxim record and generic numeric meters such as player health and opponent poise; content will define all openings, completions, characters, outcomes, and sword forms. See `docs/maxim-duel-spec.md`.
 

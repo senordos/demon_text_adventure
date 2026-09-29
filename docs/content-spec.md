@@ -61,7 +61,7 @@ Every location file will define:
 
 Where a location teaches a maxim, author the speaker or source, the opening, the completion, its Book of Questionable Wisdom note, and the later encounter(s) in which it is useful. Where a character challenges the player, author their poise, their openings, the correct completions, and both comic success and recoverable failure text.
 
-Every item needs a unique ID, display name, short description, and a purpose or deliberate red-herring label. Every non-player character needs a role, voice note, location(s), and state flags that record meaningful changes.
+Every item needs a unique ID, display name, short description, and a purpose or deliberate red-herring label. Every non-player character needs a role, voice note, location(s), and state flags that record meaningful changes. Named characters additionally need a profile and story-anchor record in [the character bible](character-bible.md) before their first dialogue-heavy scene is authored.
 
 No prose should silently modify state. No choice should dead-end the player without an intentional ending or a recoverable route. Failures should explain what happened and offer restart/undo.
 
